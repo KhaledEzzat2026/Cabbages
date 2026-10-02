@@ -52,7 +52,7 @@ boxplot(VitC~Cult,data=veggy)
 favstats(VitC~Cult,data=veggy)
 ```
 
-c39 shows that on average it has 51.5 mg of Vitamin C and c52 has on average 64.4mg of vitamin C. It means using c52 cultivation method makes cabbages have more vitamin C compared to using c39.
+c39 shows that on average it has 51.5 mg of Vitamin C and c52 has on average 64.4mg of vitamin C. It means using c52 cultivation method makes cabbages have more vitamin C compared to using c39. The average vitamin C produced from c39 cultivation is 7.1 IU and from c52 cultivation it's 8.5 IU.
 
 ## Inferential Results
 
