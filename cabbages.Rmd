@@ -1,0 +1,74 @@
+---
+title: "Cabbages"
+author: "Khaled Ezzat"
+date: "10/01/2026"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r include=FALSE,echo=FALSE}
+require(tidyverse)
+require(tigerstats)
+require(MASS)
+veggy <- cabbages
+```
+
+# Introduction
+
+<!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
+ The cabbages data from the MASS package is loaded into a dataframe called veggy. 
+ 
+ $H_0$= There is no difference in average Vitamin C between c39 and c52 cultivation methods.
+ 
+ $H_A$= There is a difference in average Vitamin C between c39 and c52 cultivation methods.
+ 
+### Is there a difference in average VitC between c39 and c52 cultivation methods?  
+
+# Methods
+
+<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+VitC is a numerical variable, Head Width is a numerical variable and Cult is a categorical variable. so we want to use the numerical~categorical helper file since the research question is based on a categorical and numerical file.
+
+# Results
+
+<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+
+## Descriptive Results
+
+### Graphical Descriptive Results
+
+<!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+boxplot(VitC~Cult,data=veggy)
+```
+
+
+### Numerical Descriptive Results
+
+<!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+favstats(VitC~Cult,data=veggy)
+```
+
+c39 shows that on average it has 51.5 mg of Vitamin C and c52 has on average 64.4mg of vitamin C. It means using c52 cultivation method makes cabbages have more vitamin C compared to using c39.
+
+## Inferential Results
+
+<!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+```{r}
+t.test(VitC~Cult,data=veggy)
+
+```
+
+
+I used the Welch Two Sample t-test to determine whether there is a difference in vitamin C between cabbages using c39 and c52 cultivation methods. c39 cabbages had on average 51.5 vitamin C and c52 cabbages had on average 64.4 vitamin c. the test came with a t-statistic of -6.3909 with 56.376 degrees of freedom and a p-value equal to 3.405e-08. Since the p-value was less than 0.05, we can reject the null hypothesis. there is enough evidence to determine that there is a difference in the average vitamin c between c39 and c52 cabbages. The 95% confidence interval for the difference in means between c39 cabbages and c52 cabbages is (-16.94296, -8.85704).
+
+The Welch Two Sample T-Test was used because VitC is a numerical variable and Cult is a categorical variable with two groups so you're only comparing the numerical results between the groups in Cult. It was appropriate to use the Welch Two Sample t-test because the test doesn't assume equal variances between the two groups.
+
+# Discussion and Conclusion
+
+<!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+Is there a difference in average VitC between c39 and c52 cultivation methods? The Welch Two Sample t-test was used to compare the average vitamin C between the two cultivation methods. It showed on average that c52 cabbages had 64.4 mg of vitamin C and c39 cabbages had 51.5 mg of vitamin C. The p-value that I got was 3.405e-08 which means that we can reject the null hypothesis. Based on the results, we have enough evidence to conclude that there is a difference in vitamin C between the c39 and c52 cultivation methods for cabbages. It also shows that on average c52 cabbages have more vitamin C than c39 cabbages. This doesn't mean that using the c52 cultivation method will make your cabbages have more vitamin C in them because there could be other factors like the soil that they are planted, where they are located, fertilizer used, or the machines that they are harvested with.
